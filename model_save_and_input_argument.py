@@ -5,7 +5,7 @@ import argparse
 from pathlib import Path
 
 parser = argparse.ArgumentParser()
-parser.add_argument("input_file", required=True)
+parser.add_argument("--input_file", dest='input_file', help='input txt file for training')
 
 args = parser.parse_args()
 
@@ -34,6 +34,8 @@ torch.manual_seed(1337)
 # wget https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
 with open(input_file, 'r', encoding='utf-8') as f:
     text = f.read()
+
+print(f'get input file {input_file}')
 
 # here are all the unique characters that occur in this text
 chars = sorted(list(set(text)))
